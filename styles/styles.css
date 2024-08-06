@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+@import url(reset.css);
+:root {
+    --fonte: 'Mooli';
+    --bg-gradient: radial-gradient(circle at 27.66% 31.25%, #e5902a 0, #eb842b 10%, #ef762d 20%, #f16631 30%, #f35336 40%, #f23c3c 50%, #f01943 60%, #ed004c 70%, #e90057 80%, #e30063 90%, #dc0070 100%);
+}
+body {
+    font-family:var(--fonte);
+    background-image: var(--bg-gradient);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2em;
+    flex-grow: 1;
+    margin: 2em 0;
+}
+
+.container-form, .container-resultados {
+    width: 100%;
+    max-width: 400px;
+    min-height: 400px;  
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2em;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.container-resultados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    text-align: center;
+}
+
+.botoes {
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+.botoes.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+}
