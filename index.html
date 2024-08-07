@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pisos</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+
+            <form class="container-form" id="flooring-form">
+                <div class="botoes-form">
+                    <button class="botoes botao-troca" type="button" id="toggleButton"
+                        onclick="toggleCalculationMode()"><img src="./assets/arrow.svg" alt=""></button>
+                    <button class="botoes botao-troca" type="button" id="deleteButton" onclick="deleteFields()"><img
+                            src="./assets/remove.svg" alt=""></button>
+                </div>
+                <div id="boxOnlyInputs" style="display: none;">
+                    <input class="form-input" placeholder="Quantidade de caixas" type="number" id="numBoxes"
+                        name="numBoxes">
+                </div>
+                <div id="areaInput">
+                    <input class="form-input" placeholder="Metragem do Cliente" type="number" id="area" name="area">
+                </div>
+                <input class="form-input" placeholder="Metragem da caixa" type="number" id="areaPerBox"
+                    name="areaPerBox" required>
+                <input class="form-input" placeholder="Valor do piso" type="number" id="pricePerBox" name="pricePerBox"
+                    required>
+                <button class="botoes" type="button" onclick="calculate()">Calcular</button>
+
+                <button class="botoes" type="button" id="lossButton" onclick="toggleLossPercentage()">10% para
+                    Perdas</button>
+            </form>
+            <div class="container-resultados">
+                <h2>Resultados</h2>
+                <h3>Caixa</h3>
+                <p class="total" id="totalBoxes"></p>
+                <h3>Área</h3>
+                <p class="total" id="totalArea"></p>
+                <h3>A VISTA</h3>
+                <p class="total" id="totalPrice"></p>
+                <h3>CRED</h3>
+                <p class="total" id="creditPrice"></p>
+            </div>
+ 
+        </div>
+        <p>Developed by <a href="https://www.github.com/henriqueferreiradev">Henrique Ferreira</a></p>
+ 
+ 
+ 
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+@import url(reset.css);
+
+:root {
+    --fonte: 'Mooli';
+    --bg-gradient: linear-gradient(55deg, #99ccff 0, #6c90d8 50%, #435882 100%);
+    --az-hover: #5679A6;
+    --preto: #000000;
+}
+
+body {
+    font-family: var(--fonte);
+    background-image: var(--bg-gradient);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2em;
+    margin: 2em 0;
+}
+
+.container-form,
+.container-resultados {
+    width: 100%;
+    max-width: 400px;
+    max-height: 450px;
+     
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2em;
+}
+
+.container-form {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.container-resultados {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    text-align: center;
+}
+
+.form-input {
+    font-size: 16px;
+    font-family: var(--fonte);
+    padding: 1em;
+   
+ 
+}
+
+.container-resultados h3 {
+    font-size: 20px;
+    border-bottom: 1px solid var(--preto);
+}
+.container-resultados p {
+    width: 100%;
+    font-size: 26px;
+    font-weight: 700;
+}
+.botoes-form {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.botoes {
+    font-size: 18px;
+    font-family: var(--fonte);
+
+    font-weight: 500;
+    padding: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #306db8;
+
+}
+
+.botao-troca {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+   
+}
+
+.botoes.active {
+    background-color: #4caf50;
+    color: white;
+}
+.botoes:hover {
+    background-color: var(--az-hover);
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+}
+
+@media screen and (max-width:479px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+}
