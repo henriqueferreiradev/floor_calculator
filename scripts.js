@@ -77,7 +77,7 @@ function toggleLossPercentage() {
 }
 document.addEventListener('DOMContentLoaded', (event) => {
     const deleteButton = document.getElementById('deleteButton');
-    const tooltip = document.getElementById('tooltip');
+    
     
     deleteButton.addEventListener('click', function() {
         deleteFields();
