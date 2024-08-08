@@ -236,12 +236,13 @@ footer {
 
 @media screen and (max-width:478px) {
     .main-container {
-        margin: 10em 1em;
+        margin: 5em;
     }
 
     .container {
         display: flex;
         flex-direction: column;
+
     }
 
     .form-inp input[name="area"],
@@ -256,6 +257,11 @@ footer {
         backdrop-filter: blur(10px);
         top: 30%;
 
+    }
+
+    .botao-alternar,
+    .botao-remover:hover {
+        background-color: var(--az-botoes);
     }
 
 
