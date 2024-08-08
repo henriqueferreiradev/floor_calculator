@@ -3,16 +3,16 @@ let lossPercentage = 0.1;
 let lossApplied = false;
 
 function calculate() {
-    const area = parseFloat(document.getElementById('area').value) || 0;
-    const areaPerBox = parseFloat(document.getElementById('areaPerBox').value) || 0;
-    const pricePerBox = parseFloat(document.getElementById('pricePerBox').value) || 0;
-    const numBoxes = parseFloat(document.getElementById('numBoxes').value) || 0;
+    const area = parseFloat(document.getElementById('area').value);
+    const areaPerBox = parseFloat(document.getElementById('areaPerBox').value);
+    const pricePerBox = parseFloat(document.getElementById('pricePerBox').value);
+    const numBoxes = parseFloat(document.getElementById('numBoxes').value);
 
     if (mode === 'area' && (isNaN(area) || isNaN(areaPerBox) || isNaN(pricePerBox))) {
-        alert('Por favor, insira valores válidos.');
+        showAlert('Por favor, insira valores válidos.');
         return;
     } else if (mode === 'boxes' && (isNaN(numBoxes) || isNaN(areaPerBox) || isNaN(pricePerBox))) {
-        alert('Por favor, insira valores válidos.');
+        showAlert('Por favor, insira valores válidos.');
         return;
     }
 
@@ -29,18 +29,22 @@ function calculate() {
     }
 
     if (lossApplied) {
-        const adjustedArea = totalArea * (1 + lossPercentage);
-        const adjustedBoxes = Math.ceil(adjustedArea / areaPerBox);
-        totalArea = adjustedBoxes * areaPerBox;
-        totalPrice = totalArea * pricePerBox;
+        totalArea = totalArea * (1 + lossPercentage);
+        totalBoxes = Math.ceil(totalArea / areaPerBox);
+        totalArea = totalBoxes * areaPerBox;  
+        totalPrice = totalArea * pricePerBox;  
     }
 
     const creditPrice = totalPrice * 1.11;
+    let Real = Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+    });
 
     document.getElementById('totalBoxes').innerText = `${totalBoxes} cx`;
     document.getElementById('totalArea').innerText = `${totalArea.toFixed(2)} m²`;
-    document.getElementById('totalPrice').innerText = `R$ ${totalPrice.toFixed(2)}`;
-    document.getElementById('creditPrice').innerText = `R$ ${creditPrice.toFixed(2)}`;
+    document.getElementById('totalPrice').innerText = `R$ ${Real.format(totalPrice.toFixed(2))}`;
+    document.getElementById('creditPrice').innerText = `R$ ${Real.format(creditPrice.toFixed(2))}`;
 }
 
 function toggleCalculationMode() {
@@ -95,4 +99,21 @@ function deleteFields() {
     document.getElementById('totalPrice').innerText = '';
     document.getElementById('creditPrice').innerText = '';
 
+}
+function showAlert(message) {
+    const alertBox = document.getElementById('customAlert');
+    const alertMessage = document.querySelector('.alert-message');
+    const content = document.getElementById('content')
+
+    alertMessage.textContent = message;
+    alertBox.style.display = 'flex';
+    content.classList.add('blur-background')
+}
+
+function closeAlert() {
+    const alertBox = document.getElementById('customAlert');
+    const content = document.getElementById("content")
+
+    alertBox.style.display = 'none';
+    content.classList.remove('blur-background');
 }
