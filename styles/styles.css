@@ -195,7 +195,6 @@ input:focus {
     transform: translate(-50%, -50%);
     padding: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
     background-color: var(--branco);
     color: var(--az-botoes);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -236,7 +235,7 @@ footer {
 
 @media screen and (max-width:478px) {
     .main-container {
-        margin: 5em;
+        padding: 10em 0;
     }
 
     .container {
