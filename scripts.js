@@ -43,8 +43,8 @@ function calculate() {
 
     document.getElementById('totalBoxes').innerText = `${totalBoxes} cx`;
     document.getElementById('totalArea').innerText = `${totalArea.toFixed(2)} m²`;
-    document.getElementById('totalPrice').innerText = `R$ ${Real.format(totalPrice.toFixed(2))}`;
-    document.getElementById('creditPrice').innerText = `R$ ${Real.format(creditPrice.toFixed(2))}`;
+    document.getElementById('totalPrice').innerText = `${Real.format(totalPrice.toFixed(2))}`;
+    document.getElementById('creditPrice').innerText = `${Real.format(creditPrice.toFixed(2))}`;
 }
 
 function toggleCalculationMode() {
