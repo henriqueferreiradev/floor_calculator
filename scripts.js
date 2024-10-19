@@ -1,7 +1,8 @@
 let mode = 'area'; // 'area' ou 'boxes'
 let lossPercentage = 0.1;
 let lossApplied = false;
-
+const resultados = document.getElementById('resultados')
+const trocarTextoBt = document.querySelector('.botao-texto')
 function calculate() {
     const area = parseFloat(document.getElementById('area').value);
     const areaPerBox = parseFloat(document.getElementById('areaPerBox').value);
@@ -40,7 +41,7 @@ function calculate() {
         style: 'currency',
         currency: 'BRL',
     });
-
+    resultados.style.display = 'flex'
     document.getElementById('totalBoxes').innerText = `${totalBoxes} cx`;
     document.getElementById('totalArea').innerText = `${totalArea.toFixed(2)} m²`;
     document.getElementById('totalPrice').innerText = `${Real.format(totalPrice.toFixed(2))}`;
@@ -54,17 +55,20 @@ function toggleCalculationMode() {
 
     if (mode === 'area') {
         mode = 'boxes';
+        trocarTextoBt.innerText = 'Caixas'
         areaInput.style.display = 'none';
         boxOnlyInputs.style.display = 'block';
         toggleButton.classList.add('active');
     } else {
         mode = 'area';
+        trocarTextoBt.innerHTML =  '<p class="botao-texto">Metro²</p>'
         areaInput.style.display = 'block';
         boxOnlyInputs.style.display = 'none';
         toggleButton.classList.remove('active');
     }
 
     // Zerar valores
+    resultados.style.display = 'none'
     document.getElementById('area').value = '';
     document.getElementById('numBoxes').value = '';
     document.getElementById('totalBoxes').innerText = '';
@@ -84,16 +88,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
     
     deleteButton.addEventListener('click', function() {
+        
         deleteFields();
     });
 });
 function deleteFields() {
-   
+    resultados.style.display = 'none'
     document.getElementById('area').value = '';
     document.getElementById('numBoxes').value = '';
     document.getElementById('areaPerBox').value = '';
     document.getElementById('pricePerBox').value = '';
- 
+    
     document.getElementById('totalBoxes').innerText = '';
     document.getElementById('totalArea').innerText = '';
     document.getElementById('totalPrice').innerText = '';

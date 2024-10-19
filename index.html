@@ -15,13 +15,12 @@
 
         
         <div class="container">
-
             <form class="container-form" id="flooring-form">
                 <div class="botoes-form">
                     <div class="div-botao">
                         <button class="botoes botao-alternar" type="button" id="toggleButton"
                             onclick="toggleCalculationMode()"><img src="./assets/arrow.svg" alt=""></button>
-                        <p class="botao-texto">Alternar</p>
+                        <p class="botao-texto">Metro²</p>
                     </div>
                     <div class="div-botao">
                         <button class="botoes botao-remover" type="button" id="deleteButton" onclick="deleteFields()"><img
@@ -45,9 +44,7 @@
                 <button class="botoes" type="button" id="lossButton" onclick="toggleLossPercentage()">10% para
                     Perdas</button>
             </form>
-            <div class="container-resultados">
-                
-
+            <div id="resultados" class="container-resultados">
                 <h3>Quantidade de caixas</h3>
                 <p class="total" id="totalBoxes"></p>
                 <h3>Metragem total</h3>

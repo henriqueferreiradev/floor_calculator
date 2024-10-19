@@ -43,6 +43,7 @@ body {
 
 .container-form,
 .container-resultados {
+    
     width: 100%;
     max-width: 400px;
     max-height: auto;
@@ -63,8 +64,8 @@ body {
 }
 
 .container-resultados {
+    display: none;
     width: 250px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1.5em;
@@ -137,6 +138,7 @@ body {
 
 .botao-texto {
     font-size: 14px;
+    text-align: center;
 }
 
 .botoes:hover {
