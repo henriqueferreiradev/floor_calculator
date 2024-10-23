@@ -238,11 +238,13 @@ footer {
 @media screen and (max-width:478px) {
     .main-container {
         padding: 2em 0;
+        height: auto;
     }
 
     .container {
         display: flex;
         flex-direction: column;
+        
 
     }
 
