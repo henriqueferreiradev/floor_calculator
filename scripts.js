@@ -9,7 +9,7 @@ calcButton.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         calculate();
     }
-        }
+});
 function calculate() {
     const area = parseFloat(document.getElementById('area').value);
     const areaPerBox = parseFloat(document.getElementById('areaPerBox').value);
