@@ -2,6 +2,7 @@ let mode = 'area'; // 'area' ou 'boxes'
 let lossPercentage = 0.1;
 let lossApplied = false;
 const resultados = document.getElementById('resultados')
+const resultadosArgamassa = document.getElementById('resultados-argamassa')
 const trocarTextoBt = document.querySelector('.botao-texto')
 const calcButton = document.getElementById('calcButton');
 
@@ -19,24 +20,32 @@ function calculate() {
         showAlert('Por favor, insira valores válidos.');
         return;
     }
-
-    let totalBoxes, totalArea, totalPrice;
+    
+    let totalBoxes, totalArea, totalPrice, totalArgamassa;
+    
+    const rendimento = 4 
 
     if (mode === 'area') {
         totalBoxes = Math.ceil(area / areaPerBox);
         totalArea = totalBoxes * areaPerBox;
         totalPrice = totalArea * pricePerBox;
+        totalArgamassa = Math.ceil(totalArea / rendimento)
+        duplaArgamassa = totalArgamassa * 2
     } else {
         totalBoxes = numBoxes;
         totalArea = totalBoxes * areaPerBox;
         totalPrice = totalArea * pricePerBox;
+        totalArgamassa = Math.ceil(totalArea / rendimento)
+        duplaArgamassa = totalArgamassa * 2
     }
 
     if (lossApplied) {
         totalArea = totalArea * (1 + lossPercentage);
         totalBoxes = Math.ceil(totalArea / areaPerBox);
         totalArea = totalBoxes * areaPerBox;  
-        totalPrice = totalArea * pricePerBox;  
+        totalPrice = totalArea * pricePerBox;
+        totalArgamassa = Math.ceil(totalArea / rendimento)
+        duplaArgamassa = totalArgamassa * 2
     }
 
     const creditPrice = totalPrice * 1.11;
@@ -45,10 +54,14 @@ function calculate() {
         currency: 'BRL',
     });
     resultados.style.display = 'flex'
+    resultadosArgamassa.style.display = 'flex'
+    
     document.getElementById('totalBoxes').innerText = `${totalBoxes} cx`;
     document.getElementById('totalArea').innerText = `${totalArea.toFixed(2)} m²`;
     document.getElementById('totalPrice').innerText = `${Real.format(totalPrice.toFixed(2))}`;
     document.getElementById('creditPrice').innerText = `${Real.format(creditPrice.toFixed(2))}`;
+    document.getElementById('totalArgamassa').innerText = `${totalArgamassa} saco(s)`
+    document.getElementById('totalDupla').innerText = `${duplaArgamassa} saco(s)`
 }
 
 function toggleCalculationMode() {
@@ -58,13 +71,14 @@ function toggleCalculationMode() {
 
     if (mode === 'area') {
         mode = 'boxes';
-        trocarTextoBt.innerText = 'Caixas'
+        trocarTextoBt.innerHTML = '<p class="botao-texto">Modo: <span>Caixa</span></p>';
         areaInput.style.display = 'none';
+        resultadosArgamassa.display ='none'
         boxOnlyInputs.style.display = 'block';
         toggleButton.classList.add('active');
     } else {
         mode = 'area';
-        trocarTextoBt.innerHTML =  '<p class="botao-texto">Metro²</p>'
+        trocarTextoBt.innerHTML =  '<p class="botao-texto">Modo: <span>Metro²</span></p>'
         areaInput.style.display = 'block';
         boxOnlyInputs.style.display = 'none';
         toggleButton.classList.remove('active');
@@ -72,12 +86,15 @@ function toggleCalculationMode() {
 
     // Zerar valores
     resultados.style.display = 'none'
+   resultadosArgamassa.style.display = 'none'
     document.getElementById('area').value = '';
     document.getElementById('numBoxes').value = '';
     document.getElementById('totalBoxes').innerText = '';
     document.getElementById('totalArea').innerText = '';
     document.getElementById('totalPrice').innerText = '';
     document.getElementById('creditPrice').innerText = '';
+    document.getElementById('totalArgamassa').innerText = '';
+    document.getElementById('totalDupla').innerText = '';
 }
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -101,7 +118,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 function deleteFields() {
+
     resultados.style.display = 'none'
+    resultadosArgamassa.style.display = 'none'
     document.getElementById('area').value = '';
     document.getElementById('numBoxes').value = '';
     document.getElementById('areaPerBox').value = '';
@@ -111,6 +130,8 @@ function deleteFields() {
     document.getElementById('totalArea').innerText = '';
     document.getElementById('totalPrice').innerText = '';
     document.getElementById('creditPrice').innerText = '';
+
+
 
 }
 function showAlert(message) {
