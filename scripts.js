@@ -3,6 +3,13 @@ let lossPercentage = 0.1;
 let lossApplied = false;
 const resultados = document.getElementById('resultados')
 const trocarTextoBt = document.querySelector('.botao-texto')
+const calcButton = document.getElementById('calcButton');
+
+calcButton.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        calculate();
+    }
+        }
 function calculate() {
     const area = parseFloat(document.getElementById('area').value);
     const areaPerBox = parseFloat(document.getElementById('areaPerBox').value);
